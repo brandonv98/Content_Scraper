@@ -4,7 +4,8 @@
   "description": "Content Scraper for ecommerce, pulls prices(and DATA) form a website. Extracts data to a .CSV file.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "node app.js && echo \" Local-server running, to quit press ctrl + c \" "
   },
   "keywords": [
     "Content",
@@ -16,7 +17,9 @@
   "license": "MIT",
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
+    "cli-table": "^0.3.1",
     "colors": "^1.3.0",
-    "http-server": "^0.11.1"
+    "request": "^2.87.0",
+    "request-promise": "^4.2.2"
   }
 }
