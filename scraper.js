@@ -98,7 +98,6 @@ function shirt(req, response) {
                     if (err) {
                       var errLog = './error-logs';
                       var errorMessage = `${fileDateCreated} --> ${config.errMsg}, ${err}`;
-                      // console.error(config.errMsg);
                         errorMsg(config.errMsg, config.dateTime, err);
                       if (!fs.existsSync(errLog)){
                         fs.mkdirSync(errLog);
