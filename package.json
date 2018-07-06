@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js && echo \" Local-server running, to quit press ctrl + c \" ",
-    "error-report": "jshint scraper.js"
+    "error-report": "jshint scraper.js",
+    "start-scraper": "node scraper.js"
   },
   "keywords": [
     "Content",

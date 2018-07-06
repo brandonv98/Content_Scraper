@@ -1,5 +1,4 @@
 // use 'esversion: 6';
-
 var cheerio = require('cheerio');
 var fs = require('fs');
 var request = require("request");
