@@ -116,7 +116,7 @@ function shirt(req, response) {
           }
 
 }
-
+// NOTE: Handle error stacks.
 function errorMsg (message, timeStamp, err) {
   var errLog = './error-logs';
   var errorMessage = `${timeStamp} --> ${message}, \n ${err}`;
