@@ -1,3 +1,5 @@
+// use 'esversion: 6';
+
 var cheerio = require('cheerio');
 var fs = require('fs');
 var request = require("request");
@@ -41,7 +43,7 @@ function shirt(req, response) {
 
                 if (href.length === shirts.length) {
                   // // NOTE: Sort by shirt link number values starting at one.
-                  function compare(a,b) {
+                  function compare(a, b) {
                     if (a.href < b.href)
                       return -1;
                     if (a.href > b.href)
