@@ -1,2 +1,0 @@
-Fri Jul 06 2018 17:20:27 GMT-0500 (Central Daylight Time) --> Some error occured - file either not saved or corrupted file saved. Please check "./error-logs" to see more., 
- Error: ENOENT: no such file or directory, open './data/2018-7-6.csv'
