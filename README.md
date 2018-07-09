@@ -42,7 +42,7 @@ Run this line to check your code for syntax errors
 $ npm run error-report
 ```
 ## Error handling
-All errors will be stored into a dir called "error-logs".
+All errors will be stored into a dir called "error-logs".  
 Open the "scrapper-log" file, which will have more detail on the error along with the date && time of the error.
 > (will be created if not found)
 
