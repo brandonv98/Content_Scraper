@@ -35,7 +35,9 @@ $ npm start
 ## Linting tool only in dev mode
 Run this line to check your code for syntax errors
 
-`$ npm run error-report`
+```
+$ npm run error-report
+```
 
 ## License
 MIT
