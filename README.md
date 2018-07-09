@@ -18,12 +18,20 @@ Those projects were chosen because they're very popular and have a great documen
 ## Installation
 Install the dependencies and devDependencies and run the application.
 
-`$ npm install`
-`$ npm start`
+```
+$ npm install
+```
+```
+$ npm start
+```
 ## For production environments...
 
-`$ NODE_ENV=production npm install`
-`$ npm start`
+```
+$ NODE_ENV=production npm install
+```
+```
+$ npm start
+```
 ## Linting tool only in dev mode
 Run this line to check your code for syntax errors
 
