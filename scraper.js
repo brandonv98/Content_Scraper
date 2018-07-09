@@ -131,6 +131,13 @@ function errorMsg (message, timeStamp, err) {
   });
 }
 
-shirt();
+
+async function asyncCall() {
+  console.log('Running call..');
+  var result = await shirt();
+}
+
+asyncCall();
+
 
 module.exports.shirt = shirt;

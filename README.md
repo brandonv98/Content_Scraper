@@ -4,7 +4,9 @@ Content-Scraper is a Node.js command line application.
 ## What does it do?
 Connect to the website http://shirts4mike.com
 Get the latest products details (price, title, url and image url)
-Save the products to a spreadsheet (CSV format) inside the data folder (will be created if not found)
+Save the products to a spreadsheet (CSV format) inside the data folder
+> (will be created if not found)
+
 ## Tech
 Content-Scraper uses a number of open source projects to work properly:
 
@@ -13,10 +15,11 @@ Content-Scraper uses a number of open source projects to work properly:
 * Cheerio - Fast, flexible & lean implementation of core jQuery designed specifically for the server.
 * FS - Export a JSON array to CSV.
 * JSHint - Static analysis tool for JavaScript.
-Those projects were chosen because they're very popular and have a great documentations.
+> Those projects were chosen because they're very popular and have a great documentations.
 
 ## Installation
-Install the dependencies and devDependencies and run the application.
+### Install the dependencies and devDependencies and run the application.
+> In your terminal navigate to projects root dir (./) then follow install.
 
 ```
 $ npm install
@@ -38,6 +41,10 @@ Run this line to check your code for syntax errors
 ```
 $ npm run error-report
 ```
+## Error handling
+All errors will be stored into a dir called "error-logs".
+Open the "scrapper-log" file, which will have more detail on the error along with the date && time of the error.
+> (will be created if not found)
 
 ## License
 MIT
