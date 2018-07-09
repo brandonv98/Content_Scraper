@@ -10,10 +10,12 @@
     "start-scraper": "node scraper.js"
   },
   "keywords": [
-    "Content",
-    "Ecommerces",
+    "Content Scraper",
     "JS",
-    "CSV"
+    "CSV",
+    "NodeJS",
+    "error logging",
+    "Read & write files"
   ],
   "author": "Brandon VanCamp",
   "license": "MIT",
