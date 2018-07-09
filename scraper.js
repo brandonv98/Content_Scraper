@@ -2,6 +2,7 @@
 var cheerio = require('cheerio');
 var fs = require('fs');
 var request = require("request");
+var colors = require('colors');
 
 function shirt(req, response) {
      // Scraper call config.
@@ -27,6 +28,7 @@ function shirt(req, response) {
           var href = $('ul.products li a');
           href.each(function() {
               var shirtUrl = config.url2 + $(this).attr('href');
+              // console.log(shirtUrl);
 
               request(shirtUrl, function (error, response, body) {
 
@@ -53,7 +55,7 @@ function shirt(req, response) {
                     }
                     saveData(shirts.sort(compare));
                   } else {
-                    console.log('Loading data...... ', shirts.length, ' of ', href.length, 'files loaded.');
+                    console.log('Loading data...... ', `${shirts.length}`.cyan, ' of ', `${href.length}`.green, 'files loaded.');
                   }
             }); // End of request call;
           });
@@ -108,7 +110,7 @@ function shirt(req, response) {
                         }
                       });
                     } else {
-                      console.log(`File saved successfully! You can view the data file saved at ./data/${fileDateCreated}`);
+                      console.log(`File saved successfully! You can view the data file saved at ./data/${fileDateCreated}`.green);
                     }
                   });
                 }
@@ -120,20 +122,20 @@ function errorMsg (message, timeStamp, err) {
   var errLog = './error-logs';
   var fileName = 'scraper-log';
   var errorMessage = `${timeStamp} --> ${message}, \n ${err}`;
-  console.error(message);
+  console.error(message.underline.red);
   if (!fs.existsSync(errLog)){
     fs.mkdirSync(errLog);
   }
   fs.writeFile(`${errLog}/${fileName}.txt`, errorMessage, 'utf8', function (err) {
     if (err) {
-      console.log('error', err);
+      console.log('error!! -->'.underline.red, err);
     }
   });
 }
 
 
 async function asyncCall() {
-  console.log('Running call..');
+  console.log('Running call : '.cyan, 'Loading.......'.green);
   var result = await shirt();
 }
 
