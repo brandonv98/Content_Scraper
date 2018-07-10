@@ -37,15 +37,12 @@ function shirt(req, response) {
           var href = $('ul.products li a');
           href.each(function() {
               var shirtUrl = config.url2 + $(this).attr('href');
-              // console.log(shirtUrl);
 
               request(shirtUrl, function (error, response, body) {
 
                 if (!error && response.statusCode === 200) {
                   var $ = cheerio.load(body);
                   var shirt = {};
-                  // var deleteComma = shirt.title.search(',');
-                  // var color = shirt.title.slice(deleteComma + 1);
 
                   shirt.price = $('.price').text();
                   shirt.title = removeComma($('title').text());
