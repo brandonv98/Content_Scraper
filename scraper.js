@@ -109,7 +109,7 @@ function shirt(req, response) {
                   if (!fs.existsSync(dir)){
                     fs.mkdirSync(dir);
                   }
-                  // Write data to a .csv file formate with the date it was created.
+                  // Write data to a .csv file format with the date we have created.
                   fs.writeFile(`./data/${fileDateCreated}.csv`, dataToWrite, 'utf8', function (err) {
                     if (err) {
                       var errLog = './error-logs';
