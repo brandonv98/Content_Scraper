@@ -3,6 +3,10 @@ var cheerio = require('cheerio');
 var fs = require('fs');
 var request = require("request");
 var colors = require('colors');
+// var csv = require('csv');
+const Json2csvParser = require('json2csv').Parser;
+const Json2csvTransform = require('json2csv').Transform;
+
 var errorHandling = {
   errMsg: 'Error occured - Please check "./error-logs" to see more details.',
 };
@@ -42,13 +46,14 @@ function shirt(req, response) {
 
                 if (!error && response.statusCode === 200) {
                   var $ = cheerio.load(body);
+                  //  // NOTE:loop to collect and store data from each product.
                   var shirt = {};
 
                   shirt.price = $('.price').text();
                   shirt.title = removeComma($('title').text());
                   shirt.href = shirtUrl;
                   shirt.imageUrl = config.url2 + $('.shirt-picture img').attr('src');
-
+                  shirt.timestamp = `${fileDateCreated}`;
 
                   // // NOTE: Delete comma from title;
                   function removeComma(title) {
@@ -71,8 +76,8 @@ function shirt(req, response) {
                       return 1;
                       return 0;
                     }
-                    saveData(shirts.sort(compare));
                     console.log('Loading data...... ', `${shirts.length}`.green, ' of ', `${href.length}`.green, 'files loaded.');
+                    saveData(shirts.sort(compare));
                   } else {
                     console.log('Loading data...... ', `${shirts.length}`.cyan, ' of ', `${href.length}`.green, 'files loaded.');
                   }
@@ -85,51 +90,38 @@ function shirt(req, response) {
         }
       });
       // // NOTE: Save data to .csv file.
-          function saveData (data) {
-            this.data = data;
-            var fs = require('fs');
+    function saveData (data) {
+    var dir = './data';
 
-              var dataToWrite = '';
-              var newRow = ',,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,';
+    // Product title fields.
+    const fields = ['title', 'price', 'href', 'imageUrl', 'timestamp'];
+    const opts = data; // Product data.
 
-                for (var i = 0; i < data.length; i++) {
-                   dataToWrite +=
-                      'Title ' + data[i].title  + ',' +
-                      'Price ' + data[i].price + ',' +
-                      'URL ' + data[i].href  + ',' +
-                      'Image Url ' + data[i].imageUrl + ',' +
-                      'Time ' + `${fileDateCreated}` +
-                       newRow + '\n';
-                }
-                // Check if data holds real data.
-                if (dataToWrite) {
-                  // Write and save file.
-                  var dir = './data';
-                  // Create dir if does not exist.
-                  if (!fs.existsSync(dir)){
-                    fs.mkdirSync(dir);
-                  }
-                  // Write data to a .csv file format with the date we have created.
-                  fs.writeFile(`./data/${fileDateCreated}.csv`, dataToWrite, 'utf8', function (err) {
-                    if (err) {
-                      var errLog = './error-logs';
-                      var errorMessage = `${fileDateCreated} --> ${errorHandling.errMsg}, ${err}`;
-                        errorMsg(errorHandling.errMsg, config.dateTime, err);
-                      if (!fs.existsSync(errLog)){
-                        fs.mkdirSync(errLog);
-                      }
-                      fs.writeFile(`${errLog}/${fileDateCreated}.txt`, errorMessage, 'utf8', function (err) {
-                        if (err) {
-                          errorMsg(errorHandling.errMsg, config.dateTime, err);
-                        }
-                      });
-                    } else {
-                      console.log(`File saved successfully! You can view the data file saved at ./data/${config.dateTime.fileDateCreated}`.green);
-                    }
-                  });
-                }
+    const json2csvParser = new Json2csvParser({ fields, quote: '' });
+    const csv = json2csvParser.parse(opts); // parse for CSV format.
+      // Write and save file.
+      // Create dir if does not exist.
+      if (!fs.existsSync(dir)){
+        fs.mkdirSync(dir);
+      }
+      fs.writeFile(`./data/${fileDateCreated}.csv`, csv, 'utf8', function (err) {
+        if (err) {
+          var errLog = './error-logs';
+          var errorMessage = `${fileDateCreated} --> ${errorHandling.errMsg}, ${err}`;
+            errorMsg(errorHandling.errMsg, config.dateTime, err);
+          if (!fs.existsSync(errLog)){
+            fs.mkdirSync(errLog);
           }
-
+          fs.writeFile(`${errLog}/${fileDateCreated}.txt`, errorMessage, 'utf8', function (err) {
+            if (err) {
+              errorMsg(errorHandling.errMsg, config.dateTime, err);
+            }
+          });
+        } else {
+          console.log(`File saved successfully! You can view the data file saved at ./data/${config.dateTime.fileDateCreated}`.green);
+        }
+      });
+    }
 }
 // NOTE: Handle error stacks.
 function errorMsg (message, timeStamp, err) {
