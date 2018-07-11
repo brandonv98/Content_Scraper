@@ -14,6 +14,7 @@ Content-Scraper uses a number of open source projects to work properly:
 * NodeJS - Running the backend.
 * Cheerio - Fast, flexible & lean implementation of core jQuery designed specifically for the server.
 * FS - Export a JSON array to CSV.
+* json2csv - Json to CVS parser package to conver json data into a csv format.
 * JSHint - Static analysis tool for JavaScript.
 > Those projects were chosen because they're very popular and have a great documentations.
 
