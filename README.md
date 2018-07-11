@@ -22,7 +22,7 @@ Content-Scraper uses a number of open source projects to work properly:
 ### Install the dependencies and devDependencies and run the application.
 > In your terminal navigate to projects root dir (./) then follow install.
 ```
-npm i brandonv_content_scraper
+npm i bthis-content-scraper
 ```
 ```
 $ npm install

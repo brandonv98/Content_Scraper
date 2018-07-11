@@ -1,5 +1,5 @@
 {
-  "name": "brandonv_content_scraper",
+  "name": "bthis-content-scraper",
   "version": "1.0.0",
   "description": "Content Scraper for ecommerce, pulls prices(and DATA) form a website. Extracts data to a .CSV file.",
   "main": "app.js",
