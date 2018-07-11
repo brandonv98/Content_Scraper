@@ -4,7 +4,6 @@ var fs = require('fs');
 var request = require("request");
 var colors = require('colors');
 const Json2csvParser = require('json2csv').Parser;
-const Json2csvTransform = require('json2csv').Transform;
 
 var errorHandling = {
   errMsg: 'Error occured - Please check "./error-logs" to see more details.',
