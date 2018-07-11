@@ -3,7 +3,6 @@ var cheerio = require('cheerio');
 var fs = require('fs');
 var request = require("request");
 var colors = require('colors');
-// var csv = require('csv');
 const Json2csvParser = require('json2csv').Parser;
 const Json2csvTransform = require('json2csv').Transform;
 
