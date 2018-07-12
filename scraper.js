@@ -12,7 +12,7 @@ var errorHandling = {
 function shirt(req, response) {
   // Scraper call config.
   var config = {
-    url: 'http://shirts4mike.com/shirts.ph/',
+    url: 'http://shirts4mike.com/shirts.php/',
     method: "GET",
     timeout: 10000,
     followRedirect: true,
