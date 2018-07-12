@@ -12,7 +12,7 @@ var errorHandling = {
 function shirt(req, response) {
   // Scraper call config.
   var config = {
-    url: 'http://shirts4mike.com/shirts.php/',
+    url: 'http://shirts4mike.com/shirts.ph/',
     method: "GET",
     timeout: 10000,
     followRedirect: true,
@@ -83,8 +83,13 @@ function shirt(req, response) {
         });
       }
       if (error || response.statusCode !== 200) {
-        console.error('Error', response.statusCode);
-        errorMsg('Please check url ', config.dateTime, 'Bad gate way error ' + response.statusCode, error);
+        if (error) {
+          console.log(error);
+          errorMsg(config.dateTime, error, ' Please check the url \n');
+        } else {
+          console.error('Error', response.statusCode);
+          errorMsg(config.dateTime, 'Please check url : ' + 'Bad gate way error ' + response.statusCode, error);
+        }
       }
     });
   // // NOTE: Save data to .csv file.
@@ -125,7 +130,7 @@ function shirt(req, response) {
   }
 }
 // NOTE: Handle error stacks.
-function errorMsg(message, timeStamp, err) {
+function errorMsg(timeStamp, message, err) {
   var errLog = './error-logs';
   var fileName = 'scraper-log';
   var errorMessage = `${timeStamp} --> ${message}, \n ${err}`;
