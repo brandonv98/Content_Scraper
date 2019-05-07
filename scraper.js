@@ -5,7 +5,7 @@ var request = require("request");
 var colors = require('colors');
 const Json2csvParser = require('json2csv').Parser;
 
-var errorHandling = {
+const errorHandling = {
   errMsg: 'Error occured - Please check "./error-logs" to see more details.',
 };
 
