@@ -1,5 +1,5 @@
 // // Use Node.js to perform look ups
-// //Create web server;
+// //Create web server:
 var scraper = require('./scraper.js');
 var http = require('http');
 var config = { // Config for server options
